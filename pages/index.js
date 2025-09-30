@@ -12,7 +12,7 @@ export default function LeadCapturePage() {
   const handleSubmit = async () => {
     if (email && name && company && dealVolume) {
       try {
-        await fetch('https://sheetdb.io/api/v1/YOUR_SHEETDB_API_KEY', {
+        await fetch('https://sheetdb.io/api/v1/yt836x5bdg6l9', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
