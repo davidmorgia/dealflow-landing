@@ -77,63 +77,94 @@ export default function LeadCapturePage() {
     if (current.component === 'dashboard') {
       return (
         <div className="bg-slate-50 rounded-lg overflow-hidden">
-          <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-slate-800 rounded flex items-center justify-center">
-                <TrendingUp className="w-3 h-3 text-white" />
-              </div>
-              <span className="text-sm font-semibold text-slate-900">deal<span className="font-light">FLOW</span></span>
-            </div>
-            <div className="flex items-center space-x-2 text-xs text-slate-600">
-              <div className="px-2 py-1 bg-slate-100 rounded">Automations</div>
-              <div className="px-2 py-1">Activity</div>
-            </div>
-          </div>
-          
-          <div className="p-4 bg-slate-50">
-            <div className="grid grid-cols-4 gap-3 mb-4">
-              {[
-                { label: 'Active', value: '12', color: 'text-green-600' },
-                { label: 'Runs Today', value: '47', color: 'text-blue-600' },
-                { label: 'Success Rate', value: '98.2%', color: 'text-slate-900' },
-                { label: 'Time Saved', value: '42h', color: 'text-purple-600' }
-              ].map((stat, idx) => (
-                <div key={idx} className="bg-white rounded-lg border border-slate-200 p-3">
-                  <div className="text-xs text-slate-600 mb-1">{stat.label}</div>
-                  <div className={`text-xl font-semibold ${stat.color}`}>{stat.value}</div>
+          {/* Desktop/Tablet View */}
+          <div className="hidden md:block">
+            <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-slate-800 rounded flex items-center justify-center">
+                  <TrendingUp className="w-3 h-3 text-white" />
                 </div>
-              ))}
+                <span className="text-sm font-semibold text-slate-900">deal<span className="font-light">FLOW</span></span>
+              </div>
+              <div className="flex items-center space-x-2 text-xs text-slate-600">
+                <div className="px-2 py-1 bg-slate-100 rounded">Automations</div>
+                <div className="px-2 py-1">Activity</div>
+              </div>
             </div>
             
-            <div className="bg-white rounded-lg border border-slate-200">
-              <div className="px-3 py-2 border-b border-slate-200 flex items-center justify-between">
-                <span className="text-sm font-semibold text-slate-900">Your Automations</span>
-                <button className="text-xs bg-slate-800 text-white px-2 py-1 rounded">+ New</button>
-              </div>
-              
-              <div className="divide-y divide-slate-200">
+            <div className="p-4 bg-slate-50">
+              <div className="grid grid-cols-4 gap-3 mb-4">
                 {[
-                  { name: 'New Deal Email Analysis', status: 'active', icon: '✉️' },
-                  { name: 'Weekly Portfolio Update', status: 'active', icon: '📅' },
-                  { name: 'Acquisition Form to Model', status: 'paused', icon: '📊' }
-                ].map((auto, idx) => (
-                  <div key={idx} className="px-3 py-2 flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg">{auto.icon}</span>
-                      <div>
-                        <div className="text-xs font-medium text-slate-900">{auto.name}</div>
-                        <div className="text-xs text-slate-500">Last run: 2 min ago</div>
-                      </div>
-                    </div>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${
-                      auto.status === 'active' 
-                        ? 'bg-green-100 text-green-700' 
-                        : 'bg-slate-200 text-slate-600'
-                    }`}>
-                      {auto.status}
-                    </span>
+                  { label: 'Active', value: '12', color: 'text-green-600' },
+                  { label: 'Runs Today', value: '47', color: 'text-blue-600' },
+                  { label: 'Success Rate', value: '98.2%', color: 'text-slate-900' },
+                  { label: 'Time Saved', value: '42h', color: 'text-purple-600' }
+                ].map((stat, idx) => (
+                  <div key={idx} className="bg-white rounded-lg border border-slate-200 p-3">
+                    <div className="text-xs text-slate-600 mb-1">{stat.label}</div>
+                    <div className={`text-xl font-semibold ${stat.color}`}>{stat.value}</div>
                   </div>
                 ))}
+              </div>
+              
+              <div className="bg-white rounded-lg border border-slate-200">
+                <div className="px-3 py-2 border-b border-slate-200 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-slate-900">Your Automations</span>
+                  <button className="text-xs bg-slate-800 text-white px-2 py-1 rounded">+ New</button>
+                </div>
+                
+                <div className="divide-y divide-slate-200">
+                  {[
+                    { name: 'New Deal Email Analysis', status: 'active', icon: '✉️' },
+                    { name: 'Weekly Portfolio Update', status: 'active', icon: '📅' },
+                    { name: 'Acquisition Form to Model', status: 'paused', icon: '📊' }
+                  ].map((auto, idx) => (
+                    <div key={idx} className="px-3 py-2 flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-lg">{auto.icon}</span>
+                        <div>
+                          <div className="text-xs font-medium text-slate-900">{auto.name}</div>
+                          <div className="text-xs text-slate-500">Last run: 2 min ago</div>
+                        </div>
+                      </div>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${
+                        auto.status === 'active' 
+                          ? 'bg-green-100 text-green-700' 
+                          : 'bg-slate-200 text-slate-600'
+                      }`}>
+                        {auto.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Simplified View */}
+          <div className="md:hidden p-4 bg-slate-50 min-h-[250px] flex flex-col justify-center">
+            <div className="text-center mb-6">
+              <div className="text-4xl mb-3">📊</div>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Dashboard Overview</h3>
+              <p className="text-sm text-slate-600">Track all automations in one place</p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="bg-white rounded-lg border border-slate-200 p-3 text-center">
+                <div className="text-2xl font-bold text-green-600 mb-1">12</div>
+                <div className="text-xs text-slate-600">Active</div>
+              </div>
+              <div className="bg-white rounded-lg border border-slate-200 p-3 text-center">
+                <div className="text-2xl font-bold text-blue-600 mb-1">47</div>
+                <div className="text-xs text-slate-600">Runs Today</div>
+              </div>
+              <div className="bg-white rounded-lg border border-slate-200 p-3 text-center">
+                <div className="text-2xl font-bold text-slate-900 mb-1">98%</div>
+                <div className="text-xs text-slate-600">Success</div>
+              </div>
+              <div className="bg-white rounded-lg border border-slate-200 p-3 text-center">
+                <div className="text-2xl font-bold text-purple-600 mb-1">42h</div>
+                <div className="text-xs text-slate-600">Saved</div>
               </div>
             </div>
           </div>
@@ -144,76 +175,110 @@ export default function LeadCapturePage() {
     if (current.component === 'analysis') {
       return (
         <div className="bg-slate-50 rounded-lg overflow-hidden">
-          <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="w-6 h-6 bg-slate-800 rounded flex items-center justify-center">
-                <TrendingUp className="w-3 h-3 text-white" />
+          {/* Desktop/Tablet View */}
+          <div className="hidden md:block">
+            <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-slate-800 rounded flex items-center justify-center">
+                  <TrendingUp className="w-3 h-3 text-white" />
+                </div>
+                <span className="text-sm font-semibold text-slate-900">523 Main Street</span>
               </div>
-              <span className="text-sm font-semibold text-slate-900">523 Main Street</span>
+              <div className="flex space-x-2">
+                <button className="text-xs border border-slate-300 px-2 py-1 rounded">Export</button>
+                <button className="text-xs bg-slate-800 text-white px-2 py-1 rounded">Approve</button>
+              </div>
             </div>
-            <div className="flex space-x-2">
-              <button className="text-xs border border-slate-300 px-2 py-1 rounded">Export</button>
-              <button className="text-xs bg-slate-800 text-white px-2 py-1 rounded">Approve</button>
+            
+            <div className="p-4 bg-slate-50">
+              <div className="bg-white rounded-lg border border-slate-200 p-3 mb-3">
+                <div className="grid grid-cols-5 gap-2 text-xs">
+                  <div>
+                    <div className="text-slate-600 mb-0.5">Type</div>
+                    <div className="font-semibold text-slate-900">Multifamily</div>
+                  </div>
+                  <div>
+                    <div className="text-slate-600 mb-0.5">Units</div>
+                    <div className="font-semibold text-slate-900">84</div>
+                  </div>
+                  <div>
+                    <div className="text-slate-600 mb-0.5">Price</div>
+                    <div className="font-semibold text-slate-900">$12.5M</div>
+                  </div>
+                  <div>
+                    <div className="text-slate-600 mb-0.5">Price/Unit</div>
+                    <div className="font-semibold text-slate-900">$148K</div>
+                  </div>
+                  <div>
+                    <div className="text-slate-600 mb-0.5">Location</div>
+                    <div className="font-semibold text-slate-900">Austin, TX</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 mb-3 flex items-start space-x-2">
+                <Check className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-xs font-semibold text-blue-900">Deal meets investment criteria</div>
+                  <div className="text-xs text-blue-800">Levered IRR of 18.2% exceeds 15% hurdle rate</div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { label: 'Levered IRR', value: '18.2%', good: true },
+                  { label: 'Equity Multiple', value: '2.1x', good: true },
+                  { label: 'Cash-on-Cash', value: '7.4%', good: false },
+                  { label: 'Exit Cap Rate', value: '5.2%', good: false }
+                ].map((metric, idx) => (
+                  <div key={idx} className="bg-white rounded-lg border border-slate-200 p-2">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-slate-600">{metric.label}</span>
+                      {metric.good ? (
+                        <Check className="w-3 h-3 text-green-600" />
+                      ) : (
+                        <span className="text-amber-600 text-xs">⚠</span>
+                      )}
+                    </div>
+                    <div className={`text-lg font-semibold ${
+                      metric.good ? 'text-green-600' : 'text-amber-600'
+                    }`}>
+                      {metric.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          
-          <div className="p-4 bg-slate-50">
-            <div className="bg-white rounded-lg border border-slate-200 p-3 mb-3">
-              <div className="grid grid-cols-5 gap-2 text-xs">
-                <div>
-                  <div className="text-slate-600 mb-0.5">Type</div>
-                  <div className="font-semibold text-slate-900">Multifamily</div>
-                </div>
-                <div>
-                  <div className="text-slate-600 mb-0.5">Units</div>
-                  <div className="font-semibold text-slate-900">84</div>
-                </div>
-                <div>
-                  <div className="text-slate-600 mb-0.5">Price</div>
-                  <div className="font-semibold text-slate-900">$12.5M</div>
-                </div>
-                <div>
-                  <div className="text-slate-600 mb-0.5">Price/Unit</div>
-                  <div className="font-semibold text-slate-900">$148K</div>
-                </div>
-                <div>
-                  <div className="text-slate-600 mb-0.5">Location</div>
-                  <div className="font-semibold text-slate-900">Austin, TX</div>
-                </div>
+
+          {/* Mobile Simplified View */}
+          <div className="md:hidden p-4 bg-slate-50 min-h-[250px] flex flex-col justify-center">
+            <div className="text-center mb-6">
+              <div className="text-4xl mb-3">📈</div>
+              <h3 className="text-lg font-semibold text-slate-900 mb-1">Deal Analysis Room</h3>
+              <p className="text-sm text-slate-600 mb-2">523 Main Street, Austin TX</p>
+              <div className="inline-block bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">
+                ✓ Meets Criteria
               </div>
             </div>
             
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-2 mb-3 flex items-start space-x-2">
-              <Check className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-              <div>
-                <div className="text-xs font-semibold text-blue-900">Deal meets investment criteria</div>
-                <div className="text-xs text-blue-800">Levered IRR of 18.2% exceeds 15% hurdle rate</div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-white rounded-lg border border-slate-200 p-3">
+                <div className="text-xs text-slate-600 mb-1">Levered IRR</div>
+                <div className="text-xl font-bold text-green-600">18.2%</div>
               </div>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { label: 'Levered IRR', value: '18.2%', good: true },
-                { label: 'Equity Multiple', value: '2.1x', good: true },
-                { label: 'Cash-on-Cash', value: '7.4%', good: false },
-                { label: 'Exit Cap Rate', value: '5.2%', good: false }
-              ].map((metric, idx) => (
-                <div key={idx} className="bg-white rounded-lg border border-slate-200 p-2">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-slate-600">{metric.label}</span>
-                    {metric.good ? (
-                      <Check className="w-3 h-3 text-green-600" />
-                    ) : (
-                      <span className="text-amber-600 text-xs">⚠</span>
-                    )}
-                  </div>
-                  <div className={`text-lg font-semibold ${
-                    metric.good ? 'text-green-600' : 'text-amber-600'
-                  }`}>
-                    {metric.value}
-                  </div>
-                </div>
-              ))}
+              <div className="bg-white rounded-lg border border-slate-200 p-3">
+                <div className="text-xs text-slate-600 mb-1">Multiple</div>
+                <div className="text-xl font-bold text-green-600">2.1x</div>
+              </div>
+              <div className="bg-white rounded-lg border border-slate-200 p-3">
+                <div className="text-xs text-slate-600 mb-1">Cash/Cash</div>
+                <div className="text-xl font-bold text-slate-900">7.4%</div>
+              </div>
+              <div className="bg-white rounded-lg border border-slate-200 p-3">
+                <div className="text-xs text-slate-600 mb-1">Exit Cap</div>
+                <div className="text-xl font-bold text-amber-600">5.2%</div>
+              </div>
             </div>
           </div>
         </div>
@@ -222,60 +287,98 @@ export default function LeadCapturePage() {
     
     return (
       <div className="bg-slate-50 rounded-lg overflow-hidden">
-        <div className="bg-white border-b border-slate-200 px-4 py-3">
-          <span className="text-sm font-semibold text-slate-900">Automation Builder</span>
-        </div>
-        
-        <div className="p-4 bg-slate-50">
-          <div className="bg-white rounded-lg border border-slate-200 p-4">
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span className="text-sm">📧</span>
+        {/* Desktop/Tablet View */}
+        <div className="hidden md:block">
+          <div className="bg-white border-b border-slate-200 px-4 py-3">
+            <span className="text-sm font-semibold text-slate-900">Automation Builder</span>
+          </div>
+          
+          <div className="p-4 bg-slate-50">
+            <div className="bg-white rounded-lg border border-slate-200 p-4">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm">📧</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-xs font-semibold text-slate-900">Trigger: Email Received</div>
+                    <div className="text-xs text-slate-600">When email arrives at deals@company.com</div>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <div className="text-xs font-semibold text-slate-900">Trigger: Email Received</div>
-                  <div className="text-xs text-slate-600">When email arrives at deals@company.com</div>
+                
+                <div className="pl-4 border-l-2 border-slate-300 ml-4">
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm">🤖</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-xs font-semibold text-slate-900">Extract Data</div>
+                      <div className="text-xs text-slate-600">Pull key metrics from attachments</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3 mb-3">
+                    <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm">📊</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-xs font-semibold text-slate-900">Update Spreadsheet</div>
+                      <div className="text-xs text-slate-600">Populate Google Sheets model</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm">✉️</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-xs font-semibold text-slate-900">Send Summary</div>
+                      <div className="text-xs text-slate-600">Email analysis to team</div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="pl-4 border-l-2 border-slate-300 ml-4">
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm">🤖</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-xs font-semibold text-slate-900">Extract Data</div>
-                    <div className="text-xs text-slate-600">Pull key metrics from attachments</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3 mb-3">
-                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm">📊</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-xs font-semibold text-slate-900">Update Spreadsheet</div>
-                    <div className="text-xs text-slate-600">Populate Google Sheets model</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-sm">✉️</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-xs font-semibold text-slate-900">Send Summary</div>
-                    <div className="text-xs text-slate-600">Email analysis to team</div>
-                  </div>
+              <div className="mt-4 pt-3 border-t border-slate-200">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-600">Status</span>
+                  <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full font-medium">Active</span>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Mobile Simplified View */}
+        <div className="md:hidden p-4 bg-slate-50 min-h-[250px] flex flex-col justify-center">
+          <div className="text-center mb-6">
+            <div className="text-4xl mb-3">⚡</div>
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">Automated Workflows</h3>
+            <p className="text-sm text-slate-600">Set up once, runs 24/7</p>
+          </div>
+          
+          <div className="space-y-3">
+            <div className="bg-white rounded-lg border border-slate-200 p-3 flex items-center space-x-3">
+              <span className="text-2xl">📧</span>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-slate-900">Email Trigger</div>
+                <div className="text-xs text-slate-600">Deal arrives</div>
+              </div>
+            </div>
             
-            <div className="mt-4 pt-3 border-t border-slate-200">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-slate-600">Status</span>
-                <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full font-medium">Active</span>
+            <div className="bg-white rounded-lg border border-slate-200 p-3 flex items-center space-x-3">
+              <span className="text-2xl">🤖</span>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-slate-900">AI Extract</div>
+                <div className="text-xs text-slate-600">Pulls key data</div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg border border-slate-200 p-3 flex items-center space-x-3">
+              <span className="text-2xl">📊</span>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-slate-900">Model Updates</div>
+                <div className="text-xs text-slate-600">Spreadsheet populates</div>
               </div>
             </div>
           </div>
@@ -564,57 +667,60 @@ export default function LeadCapturePage() {
       </div>
 
       <div className="border-t border-slate-700">
-        <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16 lg:py-20">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 px-4">
               See dealFLOW in Action
             </h2>
-            <p className="text-lg md:text-xl text-slate-400">
-              Get a preview of the platform that will transform your underwriting
+            <p className="text-base md:text-lg lg:text-xl text-slate-400 px-4">
+              Preview the platform that will transform your underwriting
             </p>
           </div>
 
-          <div className="relative">
-            <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-4 md:p-8 overflow-hidden">
+          <div className="relative px-2 md:px-0">
+            <div className="bg-slate-800/50 border border-slate-700 rounded-xl md:rounded-2xl p-3 md:p-6 lg:p-8 overflow-hidden">
               <div className="mb-4 md:mb-6">
-                <div className="bg-slate-900 rounded-lg p-2 border border-slate-700">
-                  <div className="bg-slate-800 rounded overflow-hidden" style={{ minHeight: '300px' }}>
+                <div className="bg-slate-900 rounded-lg p-1.5 md:p-2 border border-slate-700">
+                  <div className="bg-slate-800 rounded overflow-hidden overflow-y-auto" style={{ minHeight: '250px', maxHeight: '400px' }}>
                     {renderScreenshot()}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-4 md:mb-6">
                 <button
                   onClick={prevSlide}
-                  className="p-2 md:p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+                  className="p-2 md:p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors touch-manipulation"
+                  aria-label="Previous slide"
                 >
-                  <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white" />
                 </button>
 
-                <div className="flex space-x-2">
+                <div className="flex space-x-1.5 md:space-x-2">
                   {productScreenshots.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setCurrentSlide(idx)}
-                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${
+                      className={`h-2 rounded-full transition-all touch-manipulation ${
                         idx === currentSlide 
                           ? 'bg-white w-6 md:w-8' 
-                          : 'bg-slate-600 hover:bg-slate-500'
+                          : 'bg-slate-600 hover:bg-slate-500 w-2'
                       }`}
+                      aria-label={`Go to slide ${idx + 1}`}
                     />
                   ))}
                 </div>
 
                 <button
                   onClick={nextSlide}
-                  className="p-2 md:p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+                  className="p-2 md:p-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors touch-manipulation"
+                  aria-label="Next slide"
                 >
-                  <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                  <ChevronRight className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white" />
                 </button>
               </div>
 
-              <div className="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-3 lg:gap-4">
                 <div className="bg-slate-900/50 border border-slate-700 rounded-lg p-3 md:p-4">
                   <div className="text-green-400 text-xs md:text-sm font-semibold mb-1">✓ Real-time Updates</div>
                   <div className="text-slate-400 text-xs">Spreadsheets sync automatically</div>
